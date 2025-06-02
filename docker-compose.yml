@@ -1,11 +1,11 @@
 version: '3.9'
 
 services:
-  audit-service:
+  email-service:
     build: .
     env_file:
       - .env
-    container_name: audit-service
+    container_name: email-service
     ports:
       - "8080:8080"
     depends_on:
