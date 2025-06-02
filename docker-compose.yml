@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  audit-service:
+    build: .
+    env_file:
+      - .env
+    container_name: audit-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      EMAIL_FROM: ${EMAIL_FROM}
+    restart: unless-stopped
